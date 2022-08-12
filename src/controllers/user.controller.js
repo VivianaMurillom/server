@@ -90,14 +90,15 @@ exports.edit = async(req, res) => {
       const newUser = new User(req.body,req.file)
       console.log(req.file);
 
-      if(req.file){
-        const { filename }=req.file;
-        newUser.setImg(filename);
-        console.log("si hay imagen")
-      }else{
-        console.log("No hay imagen")
-      }
+      // if(req.file){
+      //   const { filename }=req.file;
+      //   newUser.setImg(filename);
+      //   console.log("si hay imagen")
+      // }else{
+      //   console.log("No hay imagen")
+      // }
       const cambioUsuario = await User.findByIdAndUpdate(id, newUser);
+      console.log(cambioUsuario)
       res.json({ msj: "Huesped actualizado exitosamente"})
     } catch(error) {
       res.status(500).json(error);
